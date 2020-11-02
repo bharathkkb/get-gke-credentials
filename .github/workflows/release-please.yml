@@ -50,7 +50,7 @@ jobs:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           commit-message: Build dist
           author: "actions-bot <github-actions-bot@google.com>"
-          title: Build dist
+          title: "chore: build dist"
           body: |
             Build dist PR
             ${{env.DIFF}}
