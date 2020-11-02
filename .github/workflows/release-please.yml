@@ -35,7 +35,7 @@ jobs:
           echo "CURRENT_HASH=${CURRENT_HASH}" >> $GITHUB_ENV
           echo "LAST_BUILD_HASH=${LAST_BUILD_HASH}" >> $GITHUB_ENV
           echo "DIFF=${DIFF}" >> $GITHUB_ENV
-          echo ${{env.DIFF}}
+          echo "${{env.DIFF}}"
       - name: compute diff
         run: |-
           
