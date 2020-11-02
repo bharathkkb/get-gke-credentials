@@ -2375,6 +2375,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             // Get inputs
+            core.info('Test');
             const name = core.getInput('cluster_name', { required: true });
             const location = core.getInput('location', { required: true });
             const credentials = core.getInput('credentials');
