@@ -16,7 +16,7 @@ jobs:
       - name: commit
         run: |-
           CURRENT_HASH=$(git rev-parse HEAD)
-          LAST_BUILD_HASH=$(git log --author=github-actions-bot@google.com -1 --pretty=format:"%H")
+          LAST_BUILD_HASH=$(git log --author=google-github-actions-bot -1 --pretty=format:"%H")
           DIFF=""
           git config --global user.name "actions-bot"
           git config user.email 'github-actions-bot@google.com'
