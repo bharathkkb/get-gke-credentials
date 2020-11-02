@@ -30,7 +30,7 @@ jobs:
           labels: automated pr
           branch: create-pull-request/build-dist
           delete-branch: true
-          push-to-fork: github-actions-bot/get-gke-credentials
+          push-to-fork: google-github-actions-bot/get-gke-credentials
   # release-please-pr:
   #   runs-on: ubuntu-latest
   #   needs: [build]
