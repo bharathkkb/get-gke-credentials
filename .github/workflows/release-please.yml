@@ -41,7 +41,7 @@ jobs:
           # set env vars
           echo "CURRENT_HASH=${CURRENT_HASH}" >> $GITHUB_ENV
           echo "LAST_BUILD_HASH=${LAST_BUILD_HASH}" >> $GITHUB_ENV
-          echo "DIFF=$(echo "is latest")= >> $GITHUB_ENV
+          echo "DIFF=$(echo "is latest")"= >> $GITHUB_ENV
           #echo 'DIFF<<EOF' >> $GITHUB_ENV
           #echo "${DIFF}" >> $GITHUB_ENV
           #echo 'EOF' >> $GITHUB_ENV
