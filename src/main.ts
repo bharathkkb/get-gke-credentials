@@ -21,7 +21,7 @@ import { ClusterClient } from './gkeClient';
 async function run(): Promise<void> {
   try {
     // Get inputs
-    core.info('Test2');
+    core.info('Test3');
     const name = core.getInput('cluster_name', { required: true });
     const location = core.getInput('location', { required: true });
     const credentials = core.getInput('credentials');
