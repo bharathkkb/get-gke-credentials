@@ -15,9 +15,26 @@ jobs:
         run: npm run build
       - name: commit
         run: |-
+          CURRENT_HASH=$(git rev-parse HEAD)
+          LAST_BUILD_HASH=$(git log --author=github-actions-bot@google.com -1 --pretty=format:"%H")
+          DIFF=""
           git config --global user.name "actions-bot"
           git add dist/
           git diff-index --quiet HEAD || git commit -m "chore: build dist get-gke-credentials"
+          if [ -z "$LAST_BUILD_HASH" ]
+          then
+                echo "Unable to find last commit by bot, skipping diff gen"
+          else
+                DIFF=$(git log ${LAST_BUILD_HASH}...${CURRENT_HASH} --oneline)
+                echo $DIFF
+          fi
+          echo "CURRENT_HASH=${CURRENT_HASH}" >> $GITHUB_ENV
+          echo "LAST_BUILD_HASH=${LAST_BUILD_HASH}" >> $GITHUB_ENV
+          echo "DIFF=${DIFF}" >> $GITHUB_ENV
+          echo ${{env.DIFF}}
+      - name: compute diff
+        run: |-
+          
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -26,7 +43,7 @@ jobs:
           author: "actions-bot <github-actions-bot@google.com>"
           title: Build dist
           body: |
-            Build dist
+            Build dist ${{env.DIFF}}
           labels: automated pr
           branch: create-pull-request/build-dist
           delete-branch: true
